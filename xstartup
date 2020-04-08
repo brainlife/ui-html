@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#should I do this on startvnc?
+vglclient &
+
+#cat <<EOF > ~/.gtkrc-2.0
+#style "xfce-panel-window-style"
+#{
+#  # Size of autohide window in pixels
+#  XfcePanelWindow::autohide-size = 3
+#}
+#EOF
+
+XFCE_PANEL_MIGRATE_DEFAULT=true startxfce4 &
+
+#find first html file
+html=$(find $INPUT_DIR -name *.html | head -1)
+
+vglrun firefox --kiosk $html &
+
+#pid=$!
+#echo $pid > /pid
+
+#maximize!
+#sleep 2
+#id=`wmctrl -pl | grep " $pid " | cut -f 1 -d " "`
+#wmctrl -i -r $id -b add,fullscreen
+
+#xdotool search --sync --onlyvisible --class "Firefox" windowactivate key F11
+
+sleep 3600
